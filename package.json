@@ -1,15 +1,15 @@
 {
-  "name": "build-status",
+  "name": "codeship_api_v2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "docker build -t karllhughes/build-status .",
-    "start": "docker run --rm -it -p 3000:3000 -v $(pwd)/controllers:/app/controllers -v $(pwd)/views:/app/views -v $(pwd)/clients:/app/clients -v $(pwd)/data-access:/app/data-access --env-file .env karllhughes/build-status",
+    "build": "docker build -t kbespalyi/codeship_api_v2 .",
+    "start": "docker run --rm -it -p 3000:3000 -v $(pwd)/controllers:/app/controllers -v $(pwd)/views:/app/views -v $(pwd)/clients:/app/clients -v $(pwd)/data-access:/app/data-access --env-file .env kbespalyi/codeship_api_v2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
