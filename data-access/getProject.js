@@ -12,9 +12,12 @@ function getProject(orgId, projectId) {
       if (value) {
         return resolve(value);
       } else {
+
         const project = (await apiClient.getProject(orgId, projectId)).project;
         project.builds = (await apiClient.listBuilds(orgId, projectId)).builds;
+
         apiCache.set(key, project);
+
         return resolve(project);
       }
     });

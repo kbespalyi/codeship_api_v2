@@ -20,7 +20,7 @@ async function single(req, res) {
 
   const project = await getProject(orgId, projectId);
 
-  res.render('single', { project: project});
+  res.render('single', {project: project});
 }
 
 module.exports = {list, single};

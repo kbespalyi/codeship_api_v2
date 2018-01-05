@@ -12,6 +12,7 @@ async function getProjects(orgId) {
       if (value) {
         return resolve(value);
       } else {
+
         let projects = (await apiClient.listProjects(orgId)).projects;
 
         projects = await Promise.all(projects.map(async (project) => {
@@ -20,6 +21,7 @@ async function getProjects(orgId) {
         }));
 
         apiCache.set(key, projects);
+
         return resolve(projects);
       }
     });
