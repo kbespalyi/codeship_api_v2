@@ -1,17 +1,27 @@
 {
   "name": "codeship_api_v2",
   "version": "1.0.0",
+  "topic": "codeship",
   "description": "Demo for codeship api v2",
-  "author": "Khusein Bespalyi",
+  "author": "Khusein Bespalyi <khusein.bespalyi@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "codeship",
+    "heroku",
+    "docker",
+    "cli",
+    "heroku-plugin"
+  ],
   "main": "index.js",
   "scripts": {
     "build": "docker build -t kbespalyi/codeship_api_v2 .",
-    "start": "docker run --rm -it -p 3000:3000 -v $(pwd)/controllers:/app/controllers -v $(pwd)/views:/app/views -v $(pwd)/clients:/app/clients -v $(pwd)/data-access:/app/data-access --env-file .env kbespalyi/codeship_api_v2",
-    "daemon": "docker run -d --restart always -p 80:3000 --env-file .env kbespalyi/codeship_api_v2 node index.js",
-    "test": "DB=mongodb NODE_ENV=test ./node_modules/.bin/nyc mocha -R spec test/tests/**/*.js test/tests/**/**/*.js test/tests/**/**/**/*.js "
+    "start": "docker run -d --restart always -p 80:3000 --env-file .env kbespalyi/codeship_api_v2 node index.js",
+    "daemon": "docker run --rm -it -p 3000:3000 -v $(pwd)/controllers:/app/controllers -v $(pwd)/views:/app/views -v $(pwd)/clients:/app/clients -v $(pwd)/data-access:/app/data-access --env-file .env kbespalyi/codeship_api_v2",
+    "test": "DB=mongodb NODE_ENV=test ./node_modules/.bin/nyc mocha -R spec test/tests/**/*.js test/tests/**/**/*.js test/tests/**/**/**/*.js"
   },
   "dependencies": {
+    "heroku-cli-util": "^1.8.1",
+    "heroku-client": "^1.9.1",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
     "node-cache": "^4.1.1",

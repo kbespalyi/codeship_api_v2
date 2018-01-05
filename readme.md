@@ -26,6 +26,58 @@ This process will vary depending on how you host your containers. As this is a s
   - In Hyper.sh, the command I run is `hyper run -d --restart always -p 80:3000 --env-file .env --name build-status --size=s2 karllhughes/build-status node index.js`.
   - Then I attach an IP: `hyper fip attach XXX.XXX.XX.XXX build-status`.
 
+## Heroku
+
+Push to Heroku with Heroku CLI
+This assumes you already have the Heroku CLI installed. Install the Heroku container registry plugin for the cli:
+
+`heroku plugins:install heroku-container-tools`
+`heroku plugins:install heroku-container-registry`
+
+And Heroku Docker
+`heroku plugins:install heroku-docker`
+
+Login to the registry:
+`heroku container:login`
+
+Now create a Heroku app:
+`heroku create`
+
+That command will return an app name, copy it to use it for the next command.
+`heroku container:push web --app codeship-api-server`
+
+Open heroku console:
+`heroku run bash`
+
+Open heroku application
+`heroku open -a codeship-api-server`
+
+
+Push to Heroku with Docker only
+The following is good if you’re deploying to Heroku with your CI tool and/or don’t want to install the Heroku CLI.
+
+You’ll need to get your Heroku token which you can get from the cli on any machine that’s logged into Heroku:
+
+`heroku auth:token`
+
+Grab the returned token and from this point on, you don’t need Heroku CLI anymore.
+
+Use the token to login to the Heroku Registry:
+`docker login --username=_ --password=${YOUR_TOKEN}`
+`registry.heroku.com`
+Note: The email and username are actually the underscore, don’t change those.
+
+And then just push your image:
+`docker build -t registry.heroku.com/codeship-api-server/web .`
+`docker push registry.heroku.com/codeship-api-server/web`
+
+Now surf to your Heroku app again and you’ll see it live.
+
+If your application responds with an HTTP error status code when we send a request. Please take a look at your logs (e.g. 'heroku logs -t -a codeship-api-server') to check for the cause of those errors and how to fix them.
+
+
+
+
 ## Contributing
 
 Contributions on Github are welcome and appreciated! Submit an issue or pull request with your improvements or suggestions.
