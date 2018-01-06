@@ -11,4 +11,5 @@ RUN npm install --silent
 
 ADD . /app
 
-CMD ["node_modules/.bin/nodemon", "index.js"]
+## CMD ["node_modules/.bin/nodemon", "index.js"]
+CMD ["node", "index.js"]
