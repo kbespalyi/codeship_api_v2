@@ -63,13 +63,20 @@ You’ll need to get your Heroku token which you can get from the cli on any mac
 Grab the returned token and from this point on, you don’t need Heroku CLI anymore.
 
 Use the token to login to the Heroku Registry:
-`docker login --username=_ --password=${YOUR_TOKEN}`
-`registry.heroku.com`
+`docker login --username=_ --password=${YOUR_TOKEN}` registry.heroku.com
+
 Note: The email and username are actually the underscore, don’t change those.
 
+Heroku deployment docker library [https://github.com/codeship-library/heroku-deployment/tree/master/dockercfg-generator]
+
+Encrypt/Decrypt Heroku env (no forget to take AES key to codeship.aes file from Codeship's project in general settings) [https://documentation.codeship.com/pro/builds-and-configuration/environment-variables/]
+
+`jet encrypt .env heroku.env.encrypted`
+`jet decrypt heroku.env.encrypted .env`
+
 And then just push your image:
-`docker build -t registry.heroku.com/codeship-api-server/web .`
-`docker push registry.heroku.com/codeship-api-server/web`
+`docker build -t registry.heroku.com/codeship-api-server/app .`
+`docker push registry.heroku.com/codeship-api-server/app`
 
 Now surf to your Heroku app again and you’ll see it live.
 
