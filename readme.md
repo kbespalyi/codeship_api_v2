@@ -82,7 +82,10 @@ Now surf to your Heroku app again and you’ll see it live.
 
 If your application responds with an HTTP error status code when we send a request. Please take a look at your logs (e.g. 'heroku logs -t -a codeship-api-server') to check for the cause of those errors and how to fix them.
 
-
+LOCAL RUNNING:
+Install Gem: `gem install foreman`
+RUN from local directory:
+`foreman start`
 
 
 ## Contributing

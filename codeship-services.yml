@@ -1,4 +1,4 @@
-app:
+web:
   build:
     image: registry.heroku.com/codeship-api-server/app
     dockerfile_path: ./Dockerfile
