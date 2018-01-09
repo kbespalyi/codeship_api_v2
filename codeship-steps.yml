@@ -3,4 +3,4 @@
   tag: master
   image_name: registry.heroku.com/codeship-sample-app/app
   registry: registry.heroku.com
-  dockercfg_service: heroku_dockercfg
+#  dockercfg_service: heroku_dockercfg

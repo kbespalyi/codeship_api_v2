@@ -84,9 +84,10 @@ If your application responds with an HTTP error status code when we send a reque
 
 LOCAL RUNNING:
 Install Gem: `gem install foreman`
-RUN from local directory:
-`foreman start`
+Run it from local directory: `foreman start`
 
+CONNECT to mongodb client in Heroku:
+`heroku run mongo --nodb`
 
 ## Contributing
 
