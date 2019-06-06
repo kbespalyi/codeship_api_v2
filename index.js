@@ -13,6 +13,11 @@ P.config({
   warnings: false
 });
 
+const fs = require('fs');
+if (fs.existsSync('./.env')) {
+  require('dotenv').config();
+}
+
 const express = require('express');
 const exphbs = require('express-handlebars');
 const projects = require('./controllers/projects');
